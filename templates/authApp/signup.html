@@ -1,0 +1,144 @@
+{% extends 'index.html' %} {% block title %}Taskflow | Create Account{% endblock title %} {% block body %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-5">
+          <div class="text-center mb-4">
+            <h3 class="fw-bold text-success">Create Your Account</h3>
+            <p class="text-muted small">
+              Join your workspace and start organizing your tasks.
+            </p>
+          </div>
+
+          <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+
+            <div class="row mb-3">
+              <div class="col">
+                <label for="fName" class="form-label text-muted small fw-bold"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-light"
+                  id="fName"
+                  name="fName"
+                  placeholder="John"
+                  required
+                />
+              </div>
+              <div class="col">
+                <label for="lName" class="form-label text-muted small fw-bold"
+                  >Last Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-light"
+                  id="lName"
+                  name="lName"
+                  placeholder="Doe"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username" class="form-label text-muted small fw-bold"
+                >Username</label
+              >
+              <input
+                type="text"
+                class="form-control bg-light"
+                id="username"
+                name="username"
+                placeholder="Choose a unique username"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label text-muted small fw-bold"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                class="form-control bg-light"
+                id="email"
+                name="email"
+                placeholder="name@example.com"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label
+                for="contactNumber"
+                class="form-label text-muted small fw-bold"
+                >Contact Number</label
+              >
+              <input
+                type="text"
+                class="form-control bg-light"
+                id="contactNumber"
+                name="contactNumber"
+                placeholder="e.g. +1 234 567 8900"
+                required
+              />
+            </div>
+
+            <div class="row mb-4">
+              <div class="col">
+                <label for="pass1" class="form-label text-muted small fw-bold"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control bg-light"
+                  id="pass1"
+                  name="pass1"
+                  placeholder="Create password"
+                  required
+                />
+              </div>
+              <div class="col">
+                <label for="pass2" class="form-label text-muted small fw-bold"
+                  >Confirm Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control bg-light"
+                  id="pass2"
+                  name="pass2"
+                  placeholder="Confirm password"
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-success w-100 py-2 fw-bold shadow-sm"
+            >
+              Sign Up
+            </button>
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="text-muted small">
+              Already have an account?
+              <a
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+                class="text-success text-decoration-none fw-bold"
+                >Log in here</a
+              >.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}
