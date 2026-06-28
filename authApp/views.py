@@ -3,10 +3,9 @@ from django.http import HttpResponse
 from django.contrib.auth.hashers import make_password
 from authApp.models import UserProfile as User
 from django.contrib.auth import authenticate, login, logout
-
 from django.contrib import messages
-# Create your views here.
 
+# Create your views here.
 def home_view(request):
     return render(request, 'index.html')
 
