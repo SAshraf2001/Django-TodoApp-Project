@@ -10,7 +10,7 @@
           <h4 class="fw-bold text-success mb-3">Add a New Task</h4>
 
           <!-- Raw HTML Form: You will add method="post" and {% csrf_token %} here later -->
-          <form action="#" method="get">
+          <form action="{% url 'task' %}" method="post"> {% csrf_token %}
             <div class="mb-3">
               <label for="taskName" class="form-label text-muted small fw-bold"
                 >Task Name</label
@@ -159,4 +159,5 @@
     </div>
   </div>
 </div>
+{% endfor %}
 {% endblock body %}
