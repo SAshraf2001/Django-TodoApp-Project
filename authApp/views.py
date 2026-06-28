@@ -59,3 +59,7 @@ def signup_view(request):
             else:
                 print('Some errors')   
     return render(request, 'authApp/signup.html')
+
+
+def logout_view(request):
+    pass
