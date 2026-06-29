@@ -24,6 +24,7 @@ class Task(models.Model):
     }
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='tasks')
     taskName = models.CharField(max_length=100, unique=True)
+    taskDescription = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='tasks')
     status = models.CharField(max_length=20, choices=status_choices, default='isPending')
     created_at = models.DateTimeField(auto_now_add=True)
