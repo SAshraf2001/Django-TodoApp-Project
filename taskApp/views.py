@@ -12,8 +12,8 @@ def task_view(request):
         taskDescription = request.POST['taskDescription']
         taskCategory = request.POST['taskCategory']
         status = request.POST['taskStatus']
-        catObject = Category.objects.create(catName=taskCategory, user=request.user.userProfile)
-        taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user.userProfile, taskDescription=taskDescription, status=status)
+        catObject = Category.objects.create(catName=taskCategory, user=request.user.UserProfile)
+        taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user.UserProfile, taskDescription=taskDescription, status=status)
         if taskObject is not None: 
             print(f'Task Object is Saved into the Database: {taskObject}')
             taskObject.save();
