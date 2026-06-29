@@ -13,5 +13,8 @@ def task_view(request):
         taskCategory = request.POST['taskCategory']
         status = request.POST['taskStatus']
         catObject = Category.objects.create(catName=taskCategory, user=request.user.userProfile)
+        taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user.userProfile, taskDescription=taskDescription, status=status)
+        if taskObject is not None: 
+            taskObject.save();
         
     return render(request, 'taskApp/taskFlow_dashboard.html')
