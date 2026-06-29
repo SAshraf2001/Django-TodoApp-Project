@@ -10,5 +10,6 @@ def task_view(request):
     if request.method == 'POST':
         taskName = request.POST['taskName']
         taskDescription = request.POST['taskDescription']
+        taskCategory = request.POST['taskCategory']
         
     return render(request, 'taskApp/taskFlow_dashboard.html')
