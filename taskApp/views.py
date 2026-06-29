@@ -8,5 +8,5 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def task_view(request):
     if request.method == 'POST':
-        pass
+        taskName = request.POST['taskName']
     return render(request, 'taskApp/taskFlow_dashboard.html')
