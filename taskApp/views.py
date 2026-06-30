@@ -16,13 +16,13 @@ def task_view(request):
         catObject = Category.objects.get_or_create(catName=taskCategory, user=request.user)
         if catObject is not None:
             catObject = catObject[0]
-            print(f'Cat Object is added into the Database: {catObject}')
+            # print(f'Cat Object is added into the Database: {catObject}')
             catObject.save();
         
         print(f'Cat Objects has been pushed {catObject.catName}')
         taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user, taskDescription=taskDescription, status=status)
         if taskObject is not None: 
-            print(f'Task Object is Saved into the Database: {taskObject}')
+            # print(f'Task Object is Saved into the Database: {taskObject}')
             messages.success(request, 'Task is saved successfully:' + taskObject.taskName)
             taskObject.save();
             return redirect('home')
