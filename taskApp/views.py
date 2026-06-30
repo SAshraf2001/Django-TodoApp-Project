@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from taskApp.models import Category, Task
 from django.contrib.auth.decorators import login_required
@@ -12,12 +12,13 @@ def task_view(request):
         taskDescription = request.POST['taskDescription']
         taskCategory = request.POST['taskCategory']
         status = request.POST['taskStatus']
-        catObject = Category.objects.create(catName=taskCategory, user=request.user)
+        catObject = Category.objects.get_or_create(catName=taskCategory, user=request.user)
         
         print(f'Cat Objects has been pushed {catObject.catName}')
         taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user, taskDescription=taskDescription, status=status)
         if taskObject is not None: 
             print(f'Task Object is Saved into the Database: {taskObject}')
             taskObject.save();
+            return redirect('home')
         
     return render(request, 'taskApp/taskFlow_dashboard.html')
