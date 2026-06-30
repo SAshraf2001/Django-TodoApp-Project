@@ -19,7 +19,6 @@ def task_view(request):
             print(f'Cat Object is added into the Database: {catObject}')
             catObject.save();
         
-        print(f'Cat Objects has been pushed {catObject.catName}')
         taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user, taskDescription=taskDescription, status=status)
         if taskObject is not None: 
             # print(f'Task Object is Saved into the Database: {taskObject}')
