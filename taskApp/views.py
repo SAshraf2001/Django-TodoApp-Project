@@ -28,9 +28,9 @@ def task_view(request):
             return redirect('home')
         
     param = Task.objects.filter(user=request.user)
-    print(f'Task Object is Saved into the Database: {param}')
+    # print(f'Task Object is Saved into the Database: {param}')
     paramCat = Category.objects.filter(user=request.user)
-    print(f'Cat Name has been seen: {paramCat[0].catName}')    
+    # print(f'Cat Name has been seen: {paramCat[0].catName}')    
     return render(request, 'taskApp/taskFlow_dashboard.html', {'params': param, 'catParams': paramCat})
 
 
