@@ -4,7 +4,7 @@ from authApp.models import UserProfile
 
 # Create your models here.
 class Category(models.Model):
-    catName = models.CharField(max_length=100, unique=True)
+    catName = models.CharField(max_length=200)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='categories')
     created_at = models.DateTimeField(auto_now_add=True)
     
