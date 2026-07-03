@@ -17,22 +17,21 @@ def task_view(request):
         
         if newTaskCat != '':
             taskCategory = newTaskCat
-        status = request.POST['taskStatus']
         catObject = Category.objects.get_or_create(catName=taskCategory, user=request.user)
         if catObject is not None:
             catObject = catObject[0]
-            print(f'Cat Object is added into the Database: {catObject}')
+            # print(f'Cat Object is added into the Database: {catObject}')
             catObject.save();
         
         taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user, taskDescription=taskDescription, status=taskStatus)
         if taskObject is not None: 
-            print(f'Task Object is Saved into the Database: {taskObject.status_choices}')
+            # print(f'Task Object is Saved into the Database: {taskObject.status_choices}')
             messages.success(request, 'Task is saved successfully:' + taskObject.taskName)
             taskObject.save();
             return redirect('home')
         
     param = Task.objects.filter(user=request.user)
-    print(f'Task Object is Saved into the Database: {param}')
+    # print(f'Task Object is Saved into the Database: {param}')
     paramCat = Category.objects.filter(user=request.user)
     statusChoices = Task.status_choices
     
