@@ -37,3 +37,6 @@ def task_view(request):
     return render(request, 'taskApp/taskFlow_dashboard.html', {'params': param, 'catParams': paramCat})
 
 
+@login_required 
+def update_task(request, taskID):
+    pass
