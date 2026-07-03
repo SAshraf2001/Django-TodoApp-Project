@@ -12,6 +12,10 @@ def task_view(request):
         taskName = request.POST['taskName']
         taskDescription = request.POST['taskDescription']
         taskCategory = request.POST['taskCategory']
+        newTaskCat = request.POST['newCategory']
+        
+        if newTaskCat != '':
+            taskCategory = newTaskCat
         status = request.POST['taskStatus']
         catObject = Category.objects.get_or_create(catName=taskCategory, user=request.user)
         if catObject is not None:
