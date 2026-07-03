@@ -13,6 +13,7 @@ def task_view(request):
         taskDescription = request.POST['taskDescription']
         taskCategory = request.POST['taskCategory']
         newTaskCat = request.POST['newCategory']
+        taskStatus = request.POST['taskStatus']
         
         if newTaskCat != '':
             taskCategory = newTaskCat
@@ -23,18 +24,25 @@ def task_view(request):
             print(f'Cat Object is added into the Database: {catObject}')
             catObject.save();
         
-        taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user, taskDescription=taskDescription, status=status)
+        taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user, taskDescription=taskDescription, status=taskStatus)
         if taskObject is not None: 
-            # print(f'Task Object is Saved into the Database: {taskObject.status_choices.keys()}')
+            print(f'Task Object is Saved into the Database: {taskObject.status_choices}')
             messages.success(request, 'Task is saved successfully:' + taskObject.taskName)
             taskObject.save();
             return redirect('home')
         
     param = Task.objects.filter(user=request.user)
-    # print(f'Task Object is Saved into the Database: {param}')
+    print(f'Task Object is Saved into the Database: {param}')
     paramCat = Category.objects.filter(user=request.user)
+    statusChoices = Task.status_choices
+    
+    context = {
+        'params': param,
+        'catParams': paramCat,
+        'statusChoices': statusChoices
+    }
     # print(f'Cat Name has been seen: {paramCat[0].catName}')    
-    return render(request, 'taskApp/taskFlow_dashboard.html', {'params': param, 'catParams': paramCat})
+    return render(request, 'taskApp/taskFlow_dashboard.html', context)
 
 
 @login_required 
