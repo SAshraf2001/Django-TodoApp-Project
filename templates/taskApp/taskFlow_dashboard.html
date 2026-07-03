@@ -100,10 +100,12 @@
                   id="taskStatus"
                   name="taskStatus"
                 >
-                  <!-- You will loop your STATUS_CHOICES here later -->
-                  <option value="isPending" selected>Pending</option>
-                  <option value="inProgress">Progress</option>
-                  <option value="isCompleted">Completed</option>
+                  <!-- You will loop your STATUS_CHOICES here later --> 
+                  {% for key, value in statusChoices.items %}
+                  <option value="{{key}}" selected>{{value}}</option>
+                  {% comment %} <option value="inProgress">Progress</option>
+                  <option value="isCompleted">Completed</option> {% endcomment %}
+                  {% endfor %}
                 </select>
               </div>
             </div>
@@ -189,4 +191,5 @@
     </div>
   </div>
 </div>
-{% endfor %} {% endblock body %}
+{% endfor %}
+{% endblock body %}
