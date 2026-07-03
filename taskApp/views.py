@@ -25,7 +25,7 @@ def task_view(request):
         
         taskObject = Task.objects.create(taskName=taskName, category=catObject, user=request.user, taskDescription=taskDescription, status=status)
         if taskObject is not None: 
-            # print(f'Task Object is Saved into the Database: {taskObject}')
+            # print(f'Task Object is Saved into the Database: {taskObject.status_choices.keys()}')
             messages.success(request, 'Task is saved successfully:' + taskObject.taskName)
             taskObject.save();
             return redirect('home')
