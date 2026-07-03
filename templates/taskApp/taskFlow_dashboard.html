@@ -64,8 +64,10 @@
                       Select existing category...
                     </option>
                     <!-- You will loop your categories here later -->
-                    <option value="1">Work</option>
-                    <option value="2">Personal</option>
+
+                    {% for cat in catParams%}
+                    <option value="{{cat.id}}">{{cat.catName}}</option>
+                    {% endfor %}
                   </select>
 
                   <div class="d-flex align-items-center my-2">
