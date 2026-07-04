@@ -46,4 +46,7 @@ def task_view(request):
 
 @login_required 
 def update_task(request, taskID):
-    pass
+    getContent = Task.objects.get(user=request.user, id=taskID)
+    # return HttpResponse(f'Update Task: {getContent.taskName} with ID: {taskID}')
+    if request.method == 'POST': 
+        pass
