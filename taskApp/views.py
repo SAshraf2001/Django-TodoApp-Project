@@ -50,3 +50,8 @@ def update_task(request, taskID):
     # return HttpResponse(f'Update Task: {getContent.taskName} with ID: {taskID}')
     if request.method == 'POST': 
         pass
+    
+    
+@login_required
+def delete_task(request, taskID):
+    pass
