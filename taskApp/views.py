@@ -54,4 +54,4 @@ def update_task(request, taskID):
     
 @login_required
 def delete_task(request, taskID):
-    pass
+    getContent = Task.objects.get(user=request.user, id=taskID)
