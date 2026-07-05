@@ -48,8 +48,30 @@ def task_view(request):
 def update_task(request, taskID):
     getContent = Task.objects.get(user=request.user, id=taskID)
     # return HttpResponse(f'Update Task: {getContent.taskName} with ID: {taskID}')
+    
     if request.method == 'POST': 
-        pass
+        updateTaskName = request.POST['updateTaskName']
+        updateDescription = request.POST['updateTaskDescription']
+        updateCategory = request.POST['updateTaskCategory']
+        updateStatus = request.POST['updateTaskStatus']
+        
+        selectedCategory = Category.objects.get_or_create(user=request.user, catName=updateCategory) # First getting the category object saved so that no plain text error comes up and we can update or save it correctly
+        
+        getContent.taskName = updateTaskName;
+        getContent.taskDescription = updateDescription;
+        getContent.category = selectedCategory[0];
+        getContent.status = updateStatus;
+        getContent.save();
+                
+        messages.success = (request, 'Task is updated successfully:' + getContent.taskName);
+        return redirect('home')
+    
+    context = {
+        'task': getContent,
+        'catParams': Category.objects.filter(user=request.user), # This is to retrieve the categories for loggedIn Users.
+        'statusChoices': Task.status_choices # All the tuple choices for the status of the task are retrieved from the model and sent to the template.
+    }
+    return render(request, 'taskApp/update_task.html', context)
     
     
 @login_required
