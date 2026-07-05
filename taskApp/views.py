@@ -77,3 +77,7 @@ def update_task(request, taskID):
 @login_required
 def delete_task(request, taskID):
     getContent = Task.objects.get(user=request.user, id=taskID)
+    if getContent is not None:
+        getContent.delete();
+        messages.success(request, 'Task is deleted successfully:' + getContent.taskName);
+        return redirect('home')
