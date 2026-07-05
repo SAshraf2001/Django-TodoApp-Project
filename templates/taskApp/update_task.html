@@ -57,6 +57,7 @@
                 class="form-control form-control-lg bg-light"
                 id="updateTaskName"
                 name="updateTaskName"
+                value="{{task.taskName}}"
                 placeholder="Update task title..."
                 required
               />
@@ -76,6 +77,7 @@
                 rows="4"
                 placeholder="Update task details..."
                 required
+                value="{{ task.taskDescription }}"
               ></textarea>
             </div>
 
@@ -92,7 +94,9 @@
                   name="updateTaskCategory"
                 >
                   <!-- You will loop categories here later, checking for the current category to mark it 'selected' -->
-                  <option value="" disabled>Select category...</option>
+                {% for category in catParams %}
+                      <option value="{{category.catName}} selected">{{ category.catName }}</option>
+                {% endfor %}
                 </select>
               </div>
 
@@ -108,7 +112,9 @@
                   name="updateTaskStatus"
                 >
                   <!-- You will loop STATUS_CHOICES here later, checking for the current status to mark it 'selected' -->
-                  <option value="" disabled>Select status...</option>
+                  {% for key, value in statusChoices.items %}
+                    <option value="{{ key }}" selected>{{ value }}</option>
+                  {% endfor %}
                 </select>
               </div>
             </div>
