@@ -42,7 +42,7 @@
 
           <!-- Raw HTML Form for Updating -->
           <!-- You will add action="{% url 'update_task' task.id %}" and method="post" here later -->
-          <form>
+          <form action="{% url 'update_task' task.id %}" method="post">
             {% csrf_token %}
 
             <div class="mb-4">
