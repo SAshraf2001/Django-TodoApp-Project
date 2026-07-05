@@ -7,7 +7,7 @@ from django.contrib import messages
 
 # Create your views here.
 def home_view(request):
-    return render(request, 'index.html')
+    return render(request, 'authApp/welcomePage.html')
 
 def about_view(request):
     return render(request, 'authApp/about.html')
