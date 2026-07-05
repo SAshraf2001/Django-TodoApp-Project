@@ -117,3 +117,4 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 AUTH_USER_MODEL = 'authApp.UserProfile' # Assigning the remaining values of the model UserProfile to the default User model of Django. This is done to extend the default User model with additional fields like contactNumber.
+LOGIN_URL = '/auth/login/' # This is the URL where users will be redirected to when they try to access a view that requires authentication and they are not logged in.
